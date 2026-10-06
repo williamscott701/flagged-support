@@ -1,0 +1,67 @@
+:root {
+  --paper: #f3ecdc;
+  --card: #faf6ea;
+  --ink: #2b261e;
+  --ink-soft: #675b49;
+  --rule: #8c7a5e;
+  --survey: #b6452e;
+  --forest: #3e6a4b;
+  --contour: rgba(160, 112, 60, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1c211e;
+    --card: #252b27;
+    --ink: #ede5d2;
+    --ink-soft: #b5aa92;
+    --rule: #8e8470;
+    --survey: #ec7a58;
+    --forest: #86b993;
+    --contour: rgba(201, 168, 106, 0.12);
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 17px/1.6 "New York", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  -webkit-text-size-adjust: 100%;
+}
+.contours {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("contours.svg");
+  background-size: 900px auto;
+  opacity: 1;
+}
+main {
+  position: relative; z-index: 1;
+  max-width: 760px; margin: 0 auto; padding: 40px 16px 64px;
+}
+.label {
+  font: 600 12px/1.4 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft);
+}
+h1 { font-size: 44px; line-height: 1.1; margin: 6px 0 4px; }
+h2 { font-size: 24px; margin: 0 0 8px; }
+.lede { font-style: italic; color: var(--ink-soft); margin: 0 0 28px; }
+.sheet {
+  position: relative; background: var(--card);
+  border: 1.2px solid var(--rule); outline: 0.6px solid color-mix(in srgb, var(--rule) 45%, transparent);
+  outline-offset: -5px; padding: 22px 22px 18px; margin: 0 0 22px;
+}
+.sheet::before, .sheet::after {
+  content: ""; position: absolute; width: 14px; height: 14px; border: 1.2px solid var(--rule);
+}
+.sheet::before { left: -8px; top: -8px; border-width: 0 1.2px 1.2px 0; }
+.sheet::after { right: -8px; bottom: -8px; border-width: 1.2px 0 0 1.2px; }
+a { color: var(--survey); font-weight: 600; }
+ul { padding-left: 20px; }
+li { margin: 4px 0; }
+.mark { display: inline-block; width: 10px; height: 10px; background: var(--survey); margin-right: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.small { font-size: 14px; color: var(--ink-soft); }
+footer { margin-top: 36px; font-size: 14px; color: var(--ink-soft); }
+footer a { margin-right: 14px; }
+@media (max-width: 480px) { h1 { font-size: 36px; } .sheet { padding: 18px 16px 14px; } }
